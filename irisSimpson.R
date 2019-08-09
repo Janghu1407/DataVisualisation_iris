@@ -1,0 +1,25 @@
+par(mfrow=c(2, 2), mar=c(6,5, 5, 2), pin=c(2, 2))
+
+with(iris, plot(Sepal.Length, Sepal.Width,type="n"))
+title(main="Sepal.Length vs Sepal.Width \n for various Species", col.main="red", cex=".75")
+legend("topright", pch=1, col=c("red", "green","blue"), legend=c("virginica", "versicolor", "setsosa"), cex=.5)
+with(subset(iris, Species=="virginica"), points(Sepal.Length, Sepal.Width,col="red"))
+with(subset(iris, Species=="versicolor"), points(Sepal.Length, Sepal.Width,col="green"))
+with(subset(iris, Species=="setosa"), points(Sepal.Length, Sepal.Width,col="blue"))
+fit <- with(iris, lm(Sepal.Width~Sepal.Length))
+abline(fit, lwd=1)
+
+with(subset(iris, Species=="setosa"), plot(Sepal.Length, Sepal.Width))
+title(main="for Setosa", cex=.75)
+fit <- with(subset(iris, Species=="setosa"), lm(Sepal.Width~Sepal.Length))
+abline(fit, lwd=1)
+
+with(subset(iris, Species=="versicolor"), plot(Sepal.Length, Sepal.Width))
+title(main="Versicolor", cex=.75)
+fit <- with(subset(iris, Species=="versicolor"), lm(Sepal.Width~Sepal.Length))
+abline(fit, lwd=1)
+
+with(subset(iris, Species=="virginica"), plot(Sepal.Length, Sepal.Width))
+fit <- with(subset(iris, Species=="virginica"), lm(Sepal.Width~Sepal.Length))
+abline(fit, lwd=1)
+title(main="Virginica", cex=.75)
